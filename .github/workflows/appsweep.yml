@@ -1,0 +1,20 @@
+# This workflow will initiate a Guardsquare AppSweep scan of your APK
+name: AppSweep mobile application security testing
+on: [push]
+jobs:
+  appsweep-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out repository code
+        uses: actions/checkout@master
+
+      - name: setup java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: upload with gradle
+        with:
+          appsweep_api_key: 'gs_appsweep_6EuIo7G_SBoBMljj9OcItqTOFZKoNDUzhGN7Wzkg'
+        run: ./gradlew uploadToAppSweepDebug
