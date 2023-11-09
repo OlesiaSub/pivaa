@@ -13,5 +13,15 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: upload with gradle
-        run: ./gradlew uploadToAppSweepDebug
+#      - name: upload with gradle
+#        with:
+#          ANDROID_HOME: '/home/olesya/Android/Sdk'
+#        run: ./gradlew uploadToAppSweepDebug
+
+      - name: basic upload
+        uses: guardsquare/appsweep-action@main
+        with:
+          appsweep_api_key: gs_appsweep_6EuIo7G_SBoBMljj9OcItqTOFZKoNDUzhGN7Wzkg
+          input_file: pivaa-debug.apk
+          commit_hash: ${{ github.sha }}
+          tags: debug
